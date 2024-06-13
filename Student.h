@@ -31,7 +31,7 @@ public:
     // Setter for current GPA
     void setCurrentGPA(float gpa) { currentGPA = gpa; }
 
-    // Comparison operators based on names
+    // Comparison operators based on lexicographical order of last name then first name
     bool operator<(const Student& other) const {
         return lastName < other.lastName || (lastName == other.lastName && firstName < other.firstName);
     }
