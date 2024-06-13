@@ -22,7 +22,7 @@ public:
 };
 
 int main() {
-    // Initialize students using a normal array
+    // Initialize students using an array
     Student studentArray[] = {
         {"John", "Doe", "1990-01-01", 3.5, "SchoolA"},
         {"Jane", "Doe", "1991-02-01", 3.7, "SchoolB"},
@@ -40,20 +40,21 @@ int main() {
     // Constructing vector from the array
     std::vector<Student> students(std::begin(studentArray), std::end(studentArray));
 
-    // Using STL algorithms to find and copy students from a specific school
+    // Using STL algorithms and lambda function to count students from a specific school
     std::string targetSchool = "SchoolA";
     auto count = std::count_if(students.begin(), students.end(), [targetSchool](const Student& s) {
         return s.getSchool() == targetSchool;  // Using lambda function with capture
     });
     std::cout << "Students attending " << targetSchool << " using STL: " << count << std::endl;
 
+    // Using STL algorithms and function object to copy students from a specific school
     std::vector<Student> filteredStudents;
     std::copy_if(students.begin(), students.end(), std::back_inserter(filteredStudents), IsAttending(targetSchool));
     std::cout << "Copied students attending " << targetSchool << " using STL: " << filteredStudents.size() << std::endl;
 
     // Using manual iteration to count and copy students
     int manualCount = 0;
-    std::vector<Student> manualFilteredStudents;
+    std::vector<Student> manualFilteredStudents; // Using STL vector to have variable storage size for filtered students
     for (size_t i = 0; i < arraySize; i++) {
         if (studentArray[i].getSchool() == targetSchool) {
             manualCount++;

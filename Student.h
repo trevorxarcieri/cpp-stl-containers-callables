@@ -1,7 +1,7 @@
 // Student.h
 // Author: Trevor Arcieri
 // Date: 13 June 2024
-// Description: Header file defining a Student class with read-only fields.
+// Description: Header file defining a Student class.
 
 #ifndef STUDENT_H
 #define STUDENT_H
@@ -21,7 +21,7 @@ public:
     Student(std::string fn, std::string ln, std::string dob, float gpa, std::string sch)
         : firstName(fn), lastName(ln), dateOfBirth(dob), currentGPA(gpa), school(sch) {}
 
-    // Getters for read-only fields
+    // Getters for all fields
     std::string getFirstName() const { return firstName; }
     std::string getLastName() const { return lastName; }
     std::string getDateOfBirth() const { return dateOfBirth; }
